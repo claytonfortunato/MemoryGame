@@ -1,11 +1,12 @@
-import card1 from "../assets/burlbassaro.png";
-import card2 from "../assets/charizard.png";
-import card3 from "../assets/charmander.png";
-import card4 from "../assets/dog.png";
-import card5 from "../assets/gengar.png";
-import card6 from "../assets/pikachu.png";
-import card7 from "../assets/snorlax.png";
-import card8 from "../assets/squirtle.jpg";
+import card1 from "../assets/card_1.png";
+import card2 from "../assets/card_2.png";
+import card3 from "../assets/card_3.png";
+import card4 from "../assets/card_4.png";
+import card5 from "../assets/card_5.png";
+import card6 from "../assets/card_6.png";
+import card7 from "../assets/card_7.png";
+import card8 from "../assets/card_8.jpg";
+
 //Cardback
 import cardBack from "../assets/pokebola.png";
 

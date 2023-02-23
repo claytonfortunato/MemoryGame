@@ -7,11 +7,7 @@ import { shuffleArray } from "../../utilis";
 import { CardType } from "../../setup";
 //Styles
 import * as C from "./styles";
-import { useState } from "react";
-
-const handleClick = (id: string) => {
-  console.log(id);
-};
+import React, { useEffect, useState } from "react";
 
 export const App = () => {
   const [cards, SetCards] = useState<CardType[]>(shuffleArray(createBoard()));
@@ -21,7 +17,17 @@ export const App = () => {
     undefined
   );
 
+  useEffect(() => {
+    if (matchedPairs === cards.length / 2) {
+      console.log("Game Won!");
+      setGameWon(true);
+    }
+  }, [matchedPairs]);
+
   const handleCardClick = (currentClickedCard: CardType) => {
+    console.log("Current", currentClickedCard);
+    console.log("1st card", clickedCard);
+
     //Virar a carta
     SetCards((prev) =>
       prev.map((card) =>
