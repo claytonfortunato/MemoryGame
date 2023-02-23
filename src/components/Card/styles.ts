@@ -1,35 +1,42 @@
-import styled from "styled-components";
-import theme from "../../theme";
+import styled, { css } from "styled-components";
 
-export const Container = styled.div``;
-
-export const Content = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+export const Wrapper = styled.div`
   position: relative;
-  width: 200px;
-  height: 200px;
-  transform-style: preserve-3d;
-  transition: transform 600ms ease-in-out;
-  &:hover {
+  perspective: 1000px;
+
+  .front.flipped {
+    z-index: 1;
     transform: rotateY(180deg);
   }
 `;
 
-export const Front = styled.div`
-  position: absolute;
+type Props = {
+  flipped: boolean;
+};
+
+const sharedStyles = css`
   width: 100%;
   height: 100%;
-  background-color: ${theme.colors.primary};
-  color: ${theme.colors.light};
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  cursor: pointer;
+  transform-style: preserve-3d;
 `;
 
-export const Back = styled.div`
-  background-color: ${theme.colors.secondary};
-  color: ${theme.colors.dark};
-  transform: rotateY(180deg);
-  width: 200px;
-  height: 200px;
+export const FrontImg = styled.img<Props>`
+  ${sharedStyles}
+
+  z-index: ${(props) => (props.flipped ? 2 : 1)};
+  transform: ${(props) => (props.flipped ? "rotate(0deg)" : "rotateY(180deg)")};
+`;
+
+export const BackImg = styled.img<Props>`
+  ${sharedStyles}
+
+  z-index: ${(props) => (props.flipped ? 1 : 2)};
+  transform: ${(props) =>
+    props.flipped ? "rotateY(180deg)" : "rotate(360deg)"};
+  position: absolute;
+  top: 0px;
+  left: 0px;
 `;
