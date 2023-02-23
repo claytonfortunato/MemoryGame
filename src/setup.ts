@@ -3,7 +3,7 @@ import card2 from "../assets/charizard.png";
 import card3 from "../assets/charmander.png";
 import card4 from "../assets/dog.png";
 import card5 from "../assets/gengar.png";
-import card6 from "../assets/pikachu.jpg";
+import card6 from "../assets/pikachu.png";
 import card7 from "../assets/snorlax.png";
 import card8 from "../assets/squirtle.jpg";
 //Cardback
@@ -14,7 +14,7 @@ export type CardType = {
   flipped: boolean;
   backImage: string;
   frontImage: string;
-  handleClick: boolean;
+  clickable: boolean;
   matchingCardId: string;
 };
 
@@ -36,7 +36,7 @@ export const createBoard = (): CardType[] =>
     flipped: false,
     backImage: cardBack,
     frontImage: card,
-    handleClick: true,
+    clickable: true,
     matchingCardId:
       i < card.length ? `cards${i + card.length}` : `card${i - cards.length}`,
   }));

@@ -1,25 +1,29 @@
+import React from "react";
+// Types
+import { CardType } from "../../setup";
+// Styles
 import * as C from "./styles";
 
-interface CardProps {
-  id: string;
-  flipped?: boolean;
-  back: string;
-  handleClick?: (id: string) => void;
-}
+type Props = {
+  card: CardType;
+  callback: (card: CardType) => void;
+};
 
-export const Card = ({ flipped = false, back, handleClick, id }: CardProps) => {
-  const handleClickFn = (id: string) => {
-    if (handleClick) {
-      handleClick(id);
-    }
+const Card: React.FC<Props> = ({ card, callback }) => {
+  const handleClick = () => {
+    if (card.clickable) callback(card);
   };
 
   return (
-    <C.Container onClick={() => handleClickFn}>
-      <C.Content>
-        <C.Front>Parte da frente do card</C.Front>
-        <C.Back>{back}</C.Back>
-      </C.Content>
-    </C.Container>
+    <C.Wrapper onClick={handleClick}>
+      <C.FrontImg
+        flipped={card.flipped}
+        src={card.frontImage}
+        alt="card-front"
+      />
+      <C.BackImg flipped={card.flipped} src={card.backImage} alt="card-back" />
+    </C.Wrapper>
   );
 };
+
+export default Card;

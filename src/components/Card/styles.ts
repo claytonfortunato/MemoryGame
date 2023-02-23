@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   position: relative;
-  perspective: 1000px;
+  /* perspective: 1000px; */
 
   .front.flipped {
     z-index: 1;
@@ -15,8 +15,9 @@ type Props = {
 };
 
 const sharedStyles = css`
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #333;
   transition: all 0.5s;
   backface-visibility: hidden;
   cursor: pointer;
