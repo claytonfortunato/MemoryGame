@@ -24,7 +24,6 @@ export const Front = styled.div`
   height: 100%;
   background-color: ${theme.colors.primary};
   color: ${theme.colors.light};
-  backface-visibility: hidden;
 `;
 
 export const Back = styled.div`
