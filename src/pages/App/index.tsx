@@ -22,7 +22,7 @@ export const App = () => {
   );
 
   const handleCardClick = (currentClickedCard: CardType) => {
-    //Flip the card
+    //Virar a carta
     SetCards((prev) =>
       prev.map((card) =>
         card.id === currentClickedCard.id
@@ -30,6 +30,39 @@ export const App = () => {
           : card
       )
     );
+    //Se esta é a primeira carta que é virada
+    //Apenas mantenha invertido
+    if (!clickedCard) {
+      setClickedCard({ ...currentClickedCard });
+      return;
+    }
+
+    // Se for uma partida
+    if (clickedCard.matchingCardId === currentClickedCard.id) {
+      setMatchedPairs((prev) => prev + 1);
+      SetCards((prev) =>
+        prev.map((card) =>
+          card.id === clickedCard.id || card.id === currentClickedCard.id
+            ? { ...card, clickable: false }
+            : card
+        )
+      );
+      setClickedCard(undefined);
+      return;
+    }
+
+    //Se não for um par combinado, espere um segundo e vire-os de volta
+    setTimeout(() => {
+      SetCards((prev) =>
+        prev.map((card) =>
+          card.id === clickedCard.id || card.id === currentClickedCard.id
+            ? { ...card, flipped: false, clickable: true }
+            : card
+        )
+      );
+    }, 1000);
+
+    setClickedCard(undefined);
   };
 
   return (

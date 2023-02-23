@@ -9,7 +9,7 @@ type Props = {
   callback: (card: CardType) => void;
 };
 
-const Card: React.FC<Props> = ({ card, callback }) => {
+const Card = ({ card, callback }: Props) => {
   const handleClick = () => {
     if (card.clickable) callback(card);
   };
