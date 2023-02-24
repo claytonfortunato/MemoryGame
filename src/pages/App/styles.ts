@@ -1,9 +1,26 @@
 import styled from "styled-components";
+import theme from "../../theme";
 
 export const Header = styled.div`
-  h1 {
-    text-transform: uppercase;
-    font-size: 3rem;
+  margin: 0.5rem 0rem;
+  p {
+    font-size: 1.2rem;
+  }
+
+  button {
+    width: 100%;
+    border: none;
+    padding: 6px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0.8;
+    background-color: ${theme.colors.secondary};
+    color: ${theme.colors.light};
+    transition: 0.3s all ease-in-out;
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 
@@ -14,6 +31,11 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+  }
 `;
 
 export const Wrapper = styled.div`

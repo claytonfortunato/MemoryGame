@@ -78,7 +78,7 @@ export const App = () => {
       <h1>Jogo da Memória</h1>
       <C.Header>
         <p>
-          Moves: {moves} | Matches: {matchedPairs}{" "}
+          Moves : {moves} | Acertos : {matchedPairs}{" "}
         </p>
 
         <button onClick={handleReset}>Reset</button>
