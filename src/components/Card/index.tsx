@@ -1,6 +1,5 @@
-// Types
 import { CardType } from "../../types/setup";
-// Styles
+
 import * as C from "./styles";
 
 type Props = {

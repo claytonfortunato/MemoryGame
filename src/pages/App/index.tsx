@@ -1,11 +1,12 @@
+import React, { useEffect, useState } from "react";
+
 import Card from "../../components/Card";
-//Types
+
 import { createBoard } from "../../types/setup";
 import { shuffleArray } from "../../utilis";
 import { CardType } from "../../types/setup";
-//Styles
+
 import * as C from "./styles";
-import React, { useEffect, useState } from "react";
 
 export const App = () => {
   const [cards, setCards] = useState<CardType[]>(shuffleArray(createBoard()));
@@ -16,10 +17,20 @@ export const App = () => {
   );
   const [moves, setMoves] = useState(0);
 
+  const alertGameWon = () => {
+    if (
+      window.confirm(
+        `Você ganhou com ${moves} movimentos e ${matchedPairs} acertos. Clique Ok para resetar a partida!`
+      ) === true
+    ) {
+      handleReset();
+    }
+  };
+
   useEffect(() => {
     if (matchedPairs === cards.length / 2) {
       setGameWon(true);
-      alert("Você terminou o jogo");
+      alertGameWon();
     }
   }, [matchedPairs]);
 
