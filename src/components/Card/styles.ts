@@ -23,6 +23,7 @@ const sharedStyles = css`
   border: 1px solid #333;
   transition: all 0.5s;
   backface-visibility: hidden;
+  background-color: #333;
   cursor: pointer;
   transform-style: preserve-3d;
 `;

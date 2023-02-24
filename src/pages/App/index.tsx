@@ -19,7 +19,7 @@ export const App = () => {
   useEffect(() => {
     if (matchedPairs === cards.length / 2) {
       setGameWon(true);
-      alert("Voce conseguiu");
+      alert("Você terminou o jogo");
     }
   }, [matchedPairs]);
 
@@ -79,7 +79,7 @@ export const App = () => {
         <h1>Jogo da Memória</h1>
         <C.Header>
           <p>
-            Moves : {moves} | Acertos : {matchedPairs}{" "}
+            Movimentos : {moves} | Acertos : {matchedPairs}{" "}
           </p>
           <button onClick={handleReset}>Reset</button>
         </C.Header>
