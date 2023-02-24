@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
-export const Header = styled.h1`
-  text-transform: uppercase;
+export const Header = styled.div`
+  h1 {
+    text-transform: uppercase;
+    font-size: 3rem;
+  }
 `;
 
 export const Container = styled.div`

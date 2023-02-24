@@ -14,6 +14,7 @@ export const App = () => {
   const [clickedCard, setClickedCard] = useState<undefined | CardType>(
     undefined
   );
+  const [moves, setMoves] = useState(0);
 
   useEffect(() => {
     if (matchedPairs === cards.length / 2) {
@@ -21,6 +22,12 @@ export const App = () => {
       alert("Voce conseguiu");
     }
   }, [matchedPairs]);
+
+  const handleReset = () => {
+    setCards(shuffleArray(createBoard()));
+    setMatchedPairs(0);
+    setMoves(0);
+  };
 
   const handleCardClick = (currentClickedCard: CardType) => {
     // Vire a carta
@@ -34,6 +41,7 @@ export const App = () => {
     // Se esta é a primeira carta que é virada
     // apenas mantenha-o invertido
     if (!clickedCard) {
+      setMoves((m) => m + 1);
       setClickedCard({ ...currentClickedCard });
       return;
     }
@@ -67,7 +75,15 @@ export const App = () => {
   };
   return (
     <C.Container>
-      <C.Header>Jogo da Memória</C.Header>
+      <h1>Jogo da Memória</h1>
+      <C.Header>
+        <p>
+          Moves: {moves} | Matches: {matchedPairs}{" "}
+        </p>
+
+        <button onClick={handleReset}>Reset</button>
+      </C.Header>
+
       <C.Wrapper>
         {cards.map((card) => (
           <Card key={card.id} card={card} callback={handleCardClick} />
