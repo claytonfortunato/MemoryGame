@@ -75,20 +75,20 @@ export const App = () => {
   };
   return (
     <C.Container>
-      <h1>Jogo da Memória</h1>
-      <C.Header>
-        <p>
-          Moves : {moves} | Acertos : {matchedPairs}{" "}
-        </p>
-
-        <button onClick={handleReset}>Reset</button>
-      </C.Header>
-
-      <C.Wrapper>
-        {cards.map((card) => (
-          <Card key={card.id} card={card} callback={handleCardClick} />
-        ))}
-      </C.Wrapper>
+      <C.Box>
+        <h1>Jogo da Memória</h1>
+        <C.Header>
+          <p>
+            Moves : {moves} | Acertos : {matchedPairs}{" "}
+          </p>
+          <button onClick={handleReset}>Reset</button>
+        </C.Header>
+        <C.Wrapper>
+          {cards.map((card) => (
+            <Card key={card.id} card={card} callback={handleCardClick} />
+          ))}
+        </C.Wrapper>
+      </C.Box>
     </C.Container>
   );
 };

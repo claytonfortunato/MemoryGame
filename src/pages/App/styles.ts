@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
+export const Box = styled.div`
+  width: 980px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ddd;
+
+  border-radius: 10px;
+`;
+
 export const Header = styled.div`
   margin: 0.5rem 0rem;
   p {
@@ -30,8 +41,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-
+  background-color: #333;
   h1 {
     text-transform: uppercase;
     font-size: 3rem;
@@ -41,7 +51,5 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, auto);
-
   grid-gap: 0.5rem;
-  max-width: 980px;
 `;

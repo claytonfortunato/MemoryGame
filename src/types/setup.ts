@@ -5,7 +5,7 @@ import card4 from "../../assets/card_4.png";
 import card5 from "../../assets/card_5.png";
 import card6 from "../../assets/card_6.png";
 import card7 from "../../assets/card_7.png";
-import card8 from "../../assets/card_8.jpg";
+import card8 from "../../assets/card_8.png";
 
 //Cardback
 import cardBack from "../../assets/poke-bola.png";
