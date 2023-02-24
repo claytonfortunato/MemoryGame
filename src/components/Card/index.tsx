@@ -1,5 +1,5 @@
 // Types
-import { CardType } from "../../setup";
+import { CardType } from "../../types/setup";
 // Styles
 import * as C from "./styles";
 

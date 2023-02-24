@@ -1,14 +1,14 @@
-import card1 from "../assets/card_1.png";
-import card2 from "../assets/card_2.png";
-import card3 from "../assets/card_3.png";
-import card4 from "../assets/card_4.png";
-import card5 from "../assets/card_5.png";
-import card6 from "../assets/card_6.png";
-import card7 from "../assets/card_7.png";
-import card8 from "../assets/card_8.jpg";
+import card1 from "../../assets/card_1.png";
+import card2 from "../../assets/card_2.png";
+import card3 from "../../assets/card_3.png";
+import card4 from "../../assets/card_4.png";
+import card5 from "../../assets/card_5.png";
+import card6 from "../../assets/card_6.png";
+import card7 from "../../assets/card_7.png";
+import card8 from "../../assets/card_8.jpg";
 
 //Cardback
-import cardBack from "../assets/pokebola.png";
+import cardBack from "../../assets/poke-bola.png";
 
 export type CardType = {
   id: string;
@@ -39,5 +39,5 @@ export const createBoard = (): CardType[] =>
     frontImage: card,
     clickable: true,
     matchingCardId:
-      i < card.length ? `cards${i + card.length}` : `card${i - cards.length}`,
+      i < cards.length ? `card${i + cards.length}` : `card${i - cards.length}`,
   }));

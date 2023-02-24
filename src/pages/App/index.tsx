@@ -1,16 +1,14 @@
 import Card from "../../components/Card";
-//Setup
-import { createBoard } from "../../setup";
-import { shuffleArray } from "../../utilis";
-
 //Types
-import { CardType } from "../../setup";
+import { createBoard } from "../../types/setup";
+import { shuffleArray } from "../../utilis";
+import { CardType } from "../../types/setup";
 //Styles
 import * as C from "./styles";
 import React, { useEffect, useState } from "react";
 
 export const App = () => {
-  const [cards, SetCards] = useState<CardType[]>(shuffleArray(createBoard()));
+  const [cards, setCards] = useState<CardType[]>(shuffleArray(createBoard()));
   const [gameWon, setGameWon] = useState(false);
   const [matchedPairs, setMatchedPairs] = useState(0);
   const [clickedCard, setClickedCard] = useState<undefined | CardType>(
@@ -19,25 +17,22 @@ export const App = () => {
 
   useEffect(() => {
     if (matchedPairs === cards.length / 2) {
-      console.log("Game Won!");
       setGameWon(true);
+      alert("Voce conseguiu");
     }
   }, [matchedPairs]);
 
   const handleCardClick = (currentClickedCard: CardType) => {
-    console.log("Current", currentClickedCard);
-    console.log("1st card", clickedCard);
-
-    //Virar a carta
-    SetCards((prev) =>
+    // Vire a carta
+    setCards((prev) =>
       prev.map((card) =>
         card.id === currentClickedCard.id
           ? { ...card, flipped: true, clickable: false }
           : card
       )
     );
-    //Se esta é a primeira carta que é virada
-    //Apenas mantenha invertido
+    // Se esta é a primeira carta que é virada
+    // apenas mantenha-o invertido
     if (!clickedCard) {
       setClickedCard({ ...currentClickedCard });
       return;
@@ -46,7 +41,7 @@ export const App = () => {
     // Se for uma partida
     if (clickedCard.matchingCardId === currentClickedCard.id) {
       setMatchedPairs((prev) => prev + 1);
-      SetCards((prev) =>
+      setCards((prev) =>
         prev.map((card) =>
           card.id === clickedCard.id || card.id === currentClickedCard.id
             ? { ...card, clickable: false }
@@ -57,9 +52,9 @@ export const App = () => {
       return;
     }
 
-    //Se não for um par combinado, espere um segundo e vire-os de volta
+    // Se não for um par combinado, espere um segundo e vire-os de volta
     setTimeout(() => {
-      SetCards((prev) =>
+      setCards((prev) =>
         prev.map((card) =>
           card.id === clickedCard.id || card.id === currentClickedCard.id
             ? { ...card, flipped: false, clickable: true }
@@ -70,12 +65,14 @@ export const App = () => {
 
     setClickedCard(undefined);
   };
-
   return (
     <C.Container>
-      {cards.map((card) => (
-        <Card key={card.id} card={card} callback={handleCardClick} />
-      ))}
+      <C.Header>Jogo da Memória</C.Header>
+      <C.Wrapper>
+        {cards.map((card) => (
+          <Card key={card.id} card={card} callback={handleCardClick} />
+        ))}
+      </C.Wrapper>
     </C.Container>
   );
 };
